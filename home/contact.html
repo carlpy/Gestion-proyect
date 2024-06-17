@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gestion IUB - Pruebas y adminsion de monitores</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../main.css" />
+    </head>
+    <body>
+        <header
+            class="flex justify-between items-center py-3 px-7 border-1 border-slate-600 shadow-md mb-6"
+        >
+            <h1 class="text-2xl font-bold">PruebaMon IUB</h1>
+
+            <nav>
+                <ul class="flex justify-between">
+                    <a href="../login.html"><li class="text-gray-400 hover:text-black mr-7">Login</li></a>
+                    <a href="./contact.html"><li class="text-gray-400 hover:text-black mr-7">Contacto</li></a>
+                    <a href="./location.html"><li class="text-gray-400 hover:text-black mr-7">Localizacion</li></a>
+                    <a href="./about-us.html"><li class="text-gray-400 hover:text-black ">Sobre nosotros</li></a>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="grid place-content-center">
+            <form
+                id="contact-form"
+                class="flex flex-col items-center border border-slate-200 border-2 shadow-lg max-w-xl mx-auto rounded p-8"
+            >
+                <div class="mb-7">
+                    <label for="username">Nombre: </label>
+                    <input
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                        type="text"
+                        id="user"
+                        placeholder="Digita tu Nombre..."
+                    />
+                </div>
+                <div class="mb-7">
+                    <label for="username">Apellidos: </label>
+                    <input
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                        type="text"
+                        id="user"
+                        placeholder="Digita tus Apellidos..."
+                    />
+                </div>
+                <div class="mb-7">
+                    <label for="password">Correo: </label>
+                    <input
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                        type="email"
+                        placeholder="Digita tu Correo..."
+                    />
+                </div>
+                <div class="mb-7 flex items-center">
+                    <label for="proposal" class="mr-4">Mensaje para nosotros </label>
+                    <textarea
+                        class="border border-1 border-gray-400 contact-input"
+                        id="proposal"
+                        rows="5"
+                        cols="35"
+                    ></textarea>
+                </div>
+
+                <button
+                    class="border border-1 border-slate-600 rounded px-4 py-2 text-white bg-black"
+                    type="submit"
+                >
+                    Ingresar
+                </button>
+            </form>
+        </main>
+
+        <script>
+            const mainForm = document.querySelector("#contact-form");
+            const contactInp = document.querySelectorAll(".contact-input");
+
+            mainForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                let isEmpty = false;
+
+                contactInp.forEach((inp) => {
+                    if (inp.value.length === 0) {
+                        isEmpty = true;
+                    }
+                });
+
+                if (isEmpty) {
+                    alert("Uno o mas campos estan vacios");
+                } else {
+                    alert("Correo enviado con exito");
+                    contactInp.forEach((inp) => (inp.value = ""));
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+[
+	{
+		"name": "Carlos",
+		"password": "1234",
+		"role": "administrador"
+	},
+	{
+		"name": "Maria",
+		"password": "Pass12",
+		"role": "personal-bienestar"
+	},
+	{
+		"name": "Brayan",
+		"password": "234",
+		"role": "estudiante"
+	},
+	{
+		"name": "Dana Vit",
+		"password": "Abc123",
+		"role": "personal-bienestar"
+	},
+	{
+		"name": "Laura Avila",
+		"password": "def678",
+		"role": "personal-bienestar"
+	}
+]

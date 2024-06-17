@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gestion IUB - Pruebas y adminsion de monitores</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="./scripts/login_app.js" defer></script>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <header
+            class="flex justify-between items-center py-3 px-7 border-1 border-slate-600 shadow-md mb-6"
+        >
+            <h1 class="text-2xl font-bold">PruebaMon IUB</h1>
+
+            <nav>
+                <ul class="flex justify-between">
+                    <a href="#"><li class="text-gray-400 hover:text-black mr-7">Login</li></a>
+                    <a href="./home/contact.html"><li class="text-gray-400 hover:text-black mr-7">Contacto</li></a>
+                    <a href="./home/location.html"><li class="text-gray-400 hover:text-black mr-7">Localizacion</li></a>
+                    <a href="./home/about-us.html"><li class="text-gray-400 hover:text-black ">Sobre nosotros</li></a>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="grid place-content-center">
+            <form
+                id="login"
+                class="flex flex-col items-center border border-slate-200 border-2 shadow-lg max-w-xl mx-auto rounded p-8"
+            >
+                <div class="mb-7">
+                    <label for="username">Usuario: </label>
+                    <input
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5 login-inputs"
+                        type="text"
+                        id="user"
+                        placeholder="Digita tu usuario..."
+                    />
+                </div>
+                <div class="mb-7">
+                    <label for="password">Contraseña: </label>
+                    <input
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5 login-inputs"
+                        type="text"
+                        id="password"
+                        placeholder="Digita tu contraseña..."
+                    />
+                </div>
+                <div class="mb-7">
+                    <label for="roles">Escoge un rol: </label>
+                    <select
+                        id="roles"
+                        name="roles"
+                        class="border border-1 border-gray-400 ml-4 px-4 py-1.5"
+                    >
+                        <option value="administrador">Administrador</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="personal-bienestar">Personal Bienestar</option>
+                    </select>
+                </div>
+
+                <button
+                    class="border border-1 border-slate-600 rounded px-4 py-2 text-white bg-black"
+                    type="submit"
+                >
+                    Ingresar
+                </button>
+            </form>
+        </main>
+    </body>
+</html>
