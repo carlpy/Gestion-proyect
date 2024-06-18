@@ -6,13 +6,17 @@
         <title>Vista Administrador</title>
         <script src="https://cdn.tailwindcss.com"></script>
 		<link rel="stylesheet" href="../styles/generics.css">
-		<script src="../scripts/sign-out.js"></script>
+		<script src="../scripts/sign-out.js" defer></script>
+		<script src="../scripts/sayHello.js" defer></script>
     </head>
     <body>
         <header class="flex justify-between items-center py-3 px-7 border-1 border-slate-600 shadow ">
             <h1 class="text-2xl font-bold">PruebaMon IUB</h1>
 
-			<button id="sign-out" class="border border-1 border-gray-400 bg-slate-700 text-white px-4 py-2">Cerrar sesion</button>
+			<div>
+				<span class="mr-5 text-md font-medium username"></span>
+				<button id="sign-out" class="border border-1 border-gray-400 bg-slate-700 text-white px-4 py-2">Cerrar sesion</button>
+			</div>
         </header>
 
 		<main>
@@ -20,15 +24,14 @@
 				<p class="text-xl font-medium mb-4">Menu</p>
 
 				<ul>
-					<a href="./estudiante-prop.html"><li class="text-gray-600 hover:text-black">Ver usuarios registrados</li></a>
+					<a href="./admin-usuarios.html"><li class="text-gray-600 hover:text-black">Ver usuarios registrados</li></a>
 				</ul>
 			</aside>
 
 			<section class="p-8">
 				<h1 class="text-2xl font-bold">
-					Welcome again <span class="text-blue-300"></span> (Administrador)
+					Welcome again <span class="text-blue-300 username"></span>
 				</h1>
-
 			</section>
 		</main>
 	</body>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vista Bienestar</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="../styles/generics.css">
+		<script src="../scripts/sign-out.js" defer></script>
+		<script src="../scripts/sayHello.js" defer></script>
+    </head>
+    <body>
+        <header class="flex justify-between items-center py-3 px-7 border-1 border-slate-600 shadow ">
+            <h1 class="text-2xl font-bold">PruebaMon IUB</h1>
+
+			<div>
+				<span class="mr-5 text-md font-medium username"></span>
+				<button id="sign-out" class="border border-1 border-gray-400 bg-slate-700 text-white px-4 py-2">Cerrar sesion</button>
+			</div>
+        </header>
+
+		<main>
+			<aside class="p-8">
+				<p class="text-xl font-medium mb-4">Menu</p>
+
+				<ul>
+					<a href="#"><li class="text-black font-medium">Revisar propuestas</li></a>
+				</ul>
+			</aside>
+
+			<section class="p-8">
+				<h1 class="text-2xl font-bold mb-4">
+					Propuestas de estudiantes <span id="proposals-num">(6)</span>
+				</h1>
+				
+				<ul class="proposal-container"></ul>
+			</section>
+		</main>
+
+		<script>
+			const proposContainer = document.querySelector('.proposal-container');
+			const proposalsSpan = document.querySelector('#proposals-num');
+
+			const proposals = JSON.parse(localStorage.getItem('studentsProposals'));
+			let amountProposals = 0;
+			console.log(proposals);
+
+			proposals.forEach(propose => {
+				proposContainer.innerHTML += proposalComponent(propose);
+				amountProposals++;
+			})
+
+			proposalsSpan.textContent = '(' + amountProposals + ')'
+
+			function proposalComponent(studentProps) {
+				return `
+					<li class="bg-white border border-1 rounded p-4 divide-y-2 flex flex-col mb-4">
+						<p class="py-2">Nombre: ${studentProps.name}</p>
+						<p class="py-2">Apellidos: ${studentProps.lastName}</p>
+						<p class="py-2">Correo: ${studentProps.email}</p>
+						<p class="py-2">Promedio: ${studentProps.gpa}</p>
+						<p class="py-2">Postulacion: ${studentProps.role}</p>
+
+						<div class="self-end">
+							<button class="border border-1 bg-green-400 px-4 py-1 rounded">Acept</button>
+							<button class="border border-1 bg-red-400 px-4 py-1 rounded">decline</button>
+						</div>
+					</li>`;
+			}
+		</script>
+	</body>
+</html>

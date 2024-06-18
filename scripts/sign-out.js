@@ -10,5 +10,3 @@ window.addEventListener("DOMContentLoaded", () => {
 signOutBtn.addEventListener("click", () => {
     localStorage.setItem("currentProfile", null);
 });
-
-document.querySelector("h1 span").textContent += profileInfo.name;

@@ -1,26 +1,31 @@
 [
 	{
 		"name": "Carlos",
+		"date": "17/06/24",
 		"password": "1234",
 		"role": "administrador"
 	},
 	{
 		"name": "Maria",
+		"date": "15/03/24",
 		"password": "Pass12",
-		"role": "personal-bienestar"
+		"role": "estudiante"
 	},
 	{
 		"name": "Brayan",
+		"date": "07/01/24",
 		"password": "234",
 		"role": "estudiante"
 	},
 	{
 		"name": "Dana Vit",
+		"date": "24/11/23",
 		"password": "Abc123",
 		"role": "personal-bienestar"
 	},
 	{
 		"name": "Laura Avila",
+		"date": "19/01/24",
 		"password": "def678",
 		"role": "personal-bienestar"
 	}

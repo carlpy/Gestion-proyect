@@ -1,4 +1,5 @@
 const mainForm = document.querySelector("#login");
+const inputs = document.querySelectorAll('input');
 
 mainForm.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -22,7 +23,8 @@ async function checkLogin(nameF, passwordF, roleF) {
 
                 if (nameF === name && passwordF === password && roleF === role) {
                     alert("Login exitoso");
-
+					inputs.forEach(inp => inp.value = '')
+					
                     localStorage.setItem(
                         "currentProfile",
                         JSON.stringify({

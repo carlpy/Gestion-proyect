@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vista Estudiante</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="../styles/generics.css" />
+        <script src="../scripts/sign-out.js" defer></script>
+        <script src="../scripts/sayHello.js" defer></script>
+    </head>
+    <body>
+        <header
+            class="flex justify-between items-center py-3 px-7 border-1 border-slate-600 shadow"
+        >
+            <h1 class="text-2xl font-bold">PruebaMon IUB</h1>
+
+            <div>
+				<span class="mr-5 text-md font-medium username"></span>
+				<button id="sign-out" class="border border-1 border-gray-400 bg-slate-700 text-white px-4 py-2">Cerrar sesion</button>
+			</div>
+        </header>
+
+        <main>
+            <aside class="p-8">
+                <p class="text-xl font-medium mb-4">Menu</p>
+
+                <ul>
+                    <a href="#"><li class="text-black font-bold">Realizar propuesta</li></a>
+                </ul>
+            </aside>
+
+            <section class="p-8">
+                <div>
+                    <form
+                        id="proposal-form"
+                        class="flex flex-col items-center border border-slate-200 border-2 shadow-lg max-w-xl mx-auto rounded p-8"
+                    >
+                        <div class="mb-7">
+                            <label for="name">Nombre: </label>
+                            <input
+                                class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                                type="text"
+                                id="name"
+                                placeholder="Digita tu Nombre..."
+                            />
+                        </div>
+
+                        <div class="mb-7">
+                            <label for="lastN">Apellidos: </label>
+                            <input
+                                class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                                type="text"
+                                id="lastN"
+                                placeholder="Digita tus Apellidos..."
+                            />
+                        </div>
+                        <div class="mb-7">
+                            <label for="mail">Correo: </label>
+                            <input
+                                class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                                type="email"
+                                id="mail"
+                                placeholder="Digita tu Correo institucional ..."
+                            />
+                        </div>
+                        <div class="mb-7">
+                            <label for="gpa">Promedio del cuatrimestre anterior</label>
+                            <input
+                                id="gpa"
+                                class="border border-1 border-gray-400 ml-4 px-4 py-1.5 contact-input"
+                                type="text"
+                                placeholder="Ej. 3.5"
+                            />
+                        </div>
+                        <div class="mb-7">
+                            <label for="role">A que monitoria quieres aplicar: </label>
+                            <select
+                                id="role"
+                                class="border border-1 border-gray-400 ml-4 px-4 py-1.5"
+                            >
+                                <option value="administrativas">Administrativas</option>
+                                <option value="academicas">Academicas</option>
+                            </select>
+                        </div>
+
+                        <button
+                            class="border border-1 border-slate-600 rounded px-4 py-2 text-white bg-black"
+                            type="submit"
+                        >
+                            Realizar propuestas
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            const form = document.querySelector("#proposal-form");
+            const proposalInps = document.querySelectorAll("form input");
+
+            form.addEventListener("submit", (e) => {
+                const nameInp = document.querySelector("#name").value.trim();
+                const lastNameInp = document.querySelector("#lastN").value.trim();
+                const mailInp = document.querySelector("#mail").value.trim();
+                const gpaInp = document.querySelector("#gpa").value.trim();
+                const roleInp = document.querySelector("#role").value.trim();
+
+                e.preventDefault();
+
+                if (!isEmpty(nameInp, lastNameInp, mailInp, gpaInp)) {
+                    sendProposal({
+                        name: nameInp,
+                        lastName: lastNameInp,
+                        email: mailInp,
+                        gpa: gpaInp,
+                        role: roleInp,
+                    });
+                    proposalInps.forEach((inp) => (inp.value = ""));
+                } else {
+                    alert("Uno o mas campos vacios");
+                }
+            });
+
+            const isEmpty = (name, lastname, mail, gpa) => {
+                return (
+                    name.length == 0 || lastname.length == 0 || mail.length == 0 || gpa.length == 0
+                );
+            };
+
+            function sendProposal(studentObj) {
+                const studentsPropos = JSON.parse(localStorage.getItem("studentsProposals"));
+
+                if (studentsPropos !== null) {
+                    studentsPropos.push(studentObj);
+                    localStorage.setItem("studentsProposals", JSON.stringify(studentsPropos));
+                } else {
+                    // si no hay propuestas, la primera sera la del estudiante que ingresemos
+                    localStorage.setItem("studentsProposals", JSON.stringify([studentObj]));
+                }
+                alert("Propuesta enviada con exito");
+            }
+        </script>
+    </body>
+</html>
