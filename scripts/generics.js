@@ -14,5 +14,7 @@ userDisplay.forEach((span) => {
 });
 
 signOutBtn.addEventListener("click", () => {
+	alert('Sesion finalizada, de regreso al login')
+	window.location.href = "../index.html"
     localStorage.setItem("currentProfile", null);
 });
